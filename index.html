@@ -10,7 +10,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
             background-color: #f4f4f4;
             border: 10px solid #333;
             padding: 20px;
@@ -18,7 +19,8 @@
         }
         #pdfContainer {
             width: 80%;
-            height: 666px;
+            max-width: 900px;
+            height: 70vh;
             border: 2px solid #000;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             margin-top: 20px;
@@ -28,22 +30,34 @@
             font-size: 16px;
             margin-bottom: 10px;
         }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
-    <select id="pdfSelector" onchange="changePDF()">
-        <option value="resumes/cpp_Turutin%2025.06.pdf">Resume</option>
-        <option value="certificates/certificate_Skillfactory.pdf">Certificate1</option>
-        <option value="certificates/certificate_ITMO.pdf">Certificate2</option>
-    </select>
-    <iframe id="pdfViewer" src="resumes/cpp_Turutin%2025.06.pdf" width="100%" height="666px"></iframe>
+<label for="pdfSelector">Выберите документ:</label>
+<select id="pdfSelector" onchange="changePDF()" title="Выбор PDF документа">
+    <option value="resumes/cpp_Turutin%2025.06.pdf">Resume</option>
+    <option value="certificates/certificate_Skillfactory.pdf">Certificate 1</option>
+    <option value="certificates/certificate_ITMO.pdf">Certificate 2</option>
+</select>
 
-    <script>
-        function changePDF() {
-            let pdfViewer = document.getElementById("pdfViewer");
-            let pdfSelector = document.getElementById("pdfSelector");
-            pdfViewer.src = pdfSelector.value;
-        }
-    </script>
+<div id="pdfContainer">
+    <iframe id="pdfViewer"
+            src="resumes/cpp_Turutin%2025.06.pdf"
+            sandbox
+            allowfullscreen></iframe>
+</div>
+
+<script>
+    function changePDF() {
+        const pdfViewer = document.getElementById("pdfViewer");
+        const pdfSelector = document.getElementById("pdfSelector");
+        pdfViewer.src = pdfSelector.value;
+    }
+</script>
 </body>
 </html>
