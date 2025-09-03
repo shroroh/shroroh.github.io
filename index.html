@@ -12,8 +12,8 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            background-color: #f4f4f4;
-            border: 10px solid #333;
+            background-color: #ffb3db;
+            border: 10px solid #ff8100;
             padding: 20px;
             box-sizing: border-box;
         }
@@ -22,7 +22,7 @@
             max-width: 900px;
             height: 70vh;
             border: 2px solid #000;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             margin-top: 20px;
         }
         select {
@@ -40,14 +40,14 @@
 <body>
 <label for="pdfSelector">Выберите документ:</label>
 <select id="pdfSelector" onchange="changePDF()" title="Выбор PDF документа">
-    <option value="cpp_Turutin%2025.06.pdf">Resume</option>
-    <option value="certificate_Skillfactory.pdf">Certificate 1</option>
-    <option value="certificate_ITMO.pdf">Certificate 2</option>
+    <option value="resume.pdf">Resume</option>
+    <option value="certificate01.pdf">Certificate 1</option>
+    <option value="certificate02.pdf">Certificate 2</option>
 </select>
 
 <div id="pdfContainer">
     <iframe id="pdfViewer"
-            src="cpp_Turutin%2025.06.pdf"
+            src="resume.pdf"
             sandbox
             allowfullscreen></iframe>
 </div>
