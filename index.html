@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shroroh</title>
+    <title>PDF Viewer</title>
     <style>
         body {
             display: flex;
@@ -16,19 +16,23 @@
             border: 10px solid #ff8100;
             padding: 20px;
             box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
         #pdfContainer {
             width: 80%;
             max-width: 900px;
             height: 70vh;
             border: 2px solid #000;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
             margin-top: 20px;
         }
         select {
             padding: 10px;
             font-size: 16px;
             margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid #ff8100;
         }
         iframe {
             width: 100%;
@@ -38,26 +42,26 @@
     </style>
 </head>
 <body>
+
 <label for="pdfSelector">Выберите документ:</label>
-<select id="pdfSelector" onchange="changePDF()" title="Выбор PDF документа">
+<select id="pdfSelector" title="Выбор PDF документа">
     <option value="resume.pdf">Resume</option>
     <option value="certificate01.pdf">Certificate 1</option>
     <option value="certificate02.pdf">Certificate 2</option>
 </select>
 
 <div id="pdfContainer">
-    <iframe id="pdfViewer"
-            src="resume.pdf"
-            sandbox
-            allowfullscreen></iframe>
+    <iframe id="pdfViewer" src="resume.pdf"></iframe>
 </div>
 
 <script>
-    function changePDF() {
-        const pdfViewer = document.getElementById("pdfViewer");
-        const pdfSelector = document.getElementById("pdfSelector");
+    const pdfSelector = document.getElementById("pdfSelector");
+    const pdfViewer = document.getElementById("pdfViewer");
+
+    pdfSelector.addEventListener("change", () => {
         pdfViewer.src = pdfSelector.value;
-    }
+    });
 </script>
+
 </body>
 </html>
